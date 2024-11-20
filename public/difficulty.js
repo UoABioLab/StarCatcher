@@ -198,12 +198,11 @@ class DifficultyScreen {
         if (this.difficulty) {
             // 设置游戏难度并打印日志
             console.log(`Setting difficulty to: ${this.difficulty}`);
-            this.game.difficulty = this.difficulty; // 直接设置游戏的难度
-            this.game.setDifficulty(this.difficulty); // 调用游戏的设置难度方法
+            this.game.difficulty = this.difficulty;
+            this.game.setDifficulty(this.difficulty);
             
-            // 返回主菜单
-            this.game.state = 'menu';
-            this.game.menu.draw();
+            // 直接开始游戏，而不是返回菜单
+            this.game.startGame();
         } else {
             alert("Please select a difficulty");
         }

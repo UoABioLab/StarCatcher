@@ -739,4 +739,19 @@ class Game {
         this.state = 'difficulty';
         this.difficultyScreen.draw();
     }
+
+    setDifficulty(difficulty) {
+        this.difficulty = difficulty;
+        console.log(`Difficulty set to: ${difficulty}`);
+        // 应用难度设置
+        const settings = difficulty_map[difficulty];
+        if (settings) {
+            console.log('Applying difficulty settings:', settings);
+            this.spawnInterval = settings.STAR_SPAWN_TIME * 1000;
+        } else {
+            console.warn('Invalid difficulty setting, using default');
+            this.difficulty = 'medium';
+            this.spawnInterval = difficulty_map['medium'].STAR_SPAWN_TIME * 1000;
+        }
+    }
 }
