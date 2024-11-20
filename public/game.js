@@ -67,7 +67,7 @@ class Game {
         this.difficultyScreen = new DifficultyScreen(this);
 
         this.playerNormalImage = new Image();
-        this.playerNormalImage.src = 'Assets/avatar/old_man.png';
+        this.playerNormalImage.src = 'public/Assets/avatar/old_man.png';
         this.playerNormalImage.onload = () => {
             console.log("Normal player image loaded");
             
@@ -75,7 +75,7 @@ class Game {
         this.playerNormalImage.onerror = () => console.error("Failed to load normal player image");
 
         this.playerArmUpImage = new Image();
-        this.playerArmUpImage.src = 'Assets/avatar/arm_up.png';
+        this.playerArmUpImage.src = 'public/Assets/avatar/arm_up.png';
         this.playerArmUpImage.onload = () => {
             console.log("Arm up player image loaded");
             
@@ -94,7 +94,7 @@ class Game {
         this.gameTime = 0;
 
         // 初始化音效
-        this.catchSound = new Audio('Assets/sound/kaching.ogg');
+        this.catchSound = new Audio('public/Assets/sound/kaching.ogg');
 
         this.landmarkData = [];
         this.userId = null;
@@ -103,10 +103,10 @@ class Game {
         this.dataCollectionInterval = 1000 / 30; // 每30帧数据
 
         // 添加新的音效
-        this.slapSound = new Audio('Assets/sound/slap.ogg');
-        this.screamingSound = new Audio('Assets/sound/screaming.ogg');
-        this.gameplayMusic = new Audio('Assets/sound/Komiku_-_12_-_Bicycle.ogg');
-        this.menuMusic = new Audio('Assets/sound/music.ogg');
+        this.slapSound = new Audio('public/Assets/sound/slap.ogg');
+        this.screamingSound = new Audio('public/Assets/sound/screaming.ogg');
+        this.gameplayMusic = new Audio('public/Assets/sound/Komiku_-_12_-_Bicycle.ogg');
+        this.menuMusic = new Audio('public/ssets/sound/music.ogg');
 
         this.poseDetection = null; // 添加这行
 
