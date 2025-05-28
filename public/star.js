@@ -9,8 +9,9 @@ class Star extends GameObject {
         this.id = Math.random().toString(36).substr(2, 9);
     }
 
-    update() {
-        this.rect.y += this.speed;
+    update(deltaTime) {
+        this.rect.y += this.speed* deltaTime;
+        console.log("Delta:", deltaTime, "Speed:", this.speed, "Move:", this.speed * deltaTime);
     }
 
     shouldRemove() {

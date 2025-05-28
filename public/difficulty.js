@@ -8,9 +8,9 @@ export class DifficultySettings {
         this.STAR_VEL = STAR_VEL;
     }
 }
-const easy_settings = new DifficultySettings(2.5, 5, 2, 2);
-const medium_settings = new DifficultySettings(2.0, 5, 4, 4);
-const hard_settings = new DifficultySettings(1.5, 5, 6, 6);
+const easy_settings = new DifficultySettings(2.5, 5, 100, 200);
+const medium_settings = new DifficultySettings(2.0, 5, 250, 350);
+const hard_settings = new DifficultySettings(1.5, 5, 350, 450);
 window.difficulty_map = {
     "easy": easy_settings,
     "medium": medium_settings,

@@ -9,9 +9,11 @@ class Balloon extends GameObject {
         this.id = Math.random().toString(36).substr(2, 9);
         this.isBurst = false;
     }
-    update() {
+    update(deltaTime) {
         if (!this.isBurst) {
-            this.rect.y += this.speed;
+            this.rect.y += this.speed* deltaTime;
+
+            console.log("Delta:", deltaTime, "Speed:", this.speed, "Move:", this.speed * deltaTime);
         }
     }
     shouldRemove() {

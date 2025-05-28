@@ -28,6 +28,7 @@ export class Game {
 
         // 绑定方法到实例
         this.updateGame = this.updateGame.bind(this);
+        this.lastUpdateTime = Date.now(); // 初始化帧间基准时间
         // this.handleClick = this.handleClick.bind(this);
 
         this.objects = [];
@@ -172,6 +173,11 @@ export class Game {
     }
 
     updateGame() {
+
+        const now = Date.now();
+        const deltaTime = (now - this.lastUpdateTime) / 1000 || 0; // 计算时间差，避免第一次为0
+        this.lastUpdateTime = now;
+
         // console.log("Current game state:", this.state);
         switch (this.state) {
             case 'menu':
@@ -184,7 +190,7 @@ export class Game {
                 // 倒计时现在由 updateCountdown 方法处理
                 break;
             case 'playing':
-                this.updatePlaying();
+                this.updatePlaying(deltaTime);
                 break;
             case 'gameover':
                 // 游戏结束状态保持静态
@@ -204,8 +210,9 @@ export class Game {
         this.gameArea.appendChild(menuElement);
     }
 
-    updatePlaying() {
-        this.gameTime += 1/60; // 假设60FPS
+    updatePlaying(deltaTime) {
+        // this.gameTime += 1/60; // 假设60FPS
+        this.gameTime += deltaTime; // 使用 deltaTime 来更新游戏时间
         this.timeLeft = Math.max(0, 60 - this.gameTime);
 
         // 生成新的对象
@@ -219,7 +226,7 @@ export class Game {
 
         // 更新和绘制所有对象
         this.objects = this.objects.filter(obj => {
-            obj.update();
+            obj.update(deltaTime);
             if (obj instanceof Balloon && obj.rect.y + obj.rect.height >= this.height && !obj.isBurst) {
                 obj.burst();
                 this.lives--;
